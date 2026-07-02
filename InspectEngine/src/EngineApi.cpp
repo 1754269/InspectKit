@@ -10,7 +10,14 @@ INSP_API InspHandle Insp_Create(void)
 INSP_API int Insp_Run(InspHandle h, const unsigned char* gray, int width, int height, int stride)
 {
 	try {
-		
+		Engine* e = static_cast<Engine*>(h);
+
+		int result = e->Run(gray, width, height, stride);
+
+		if (result != 0)
+		{
+			return -1;
+		}
 
 		return 0;
 	}
