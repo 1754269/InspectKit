@@ -29,17 +29,6 @@ int main(int argc, char** argv)
     int h = grayImg.rows;
     int stride = (int)grayImg.step;
 
-    // [DEBUG] 임시: 엔진과 동일한 이진화를 여기서도 돌려 눈으로 확인용 저장
-    {
-        cv::Mat dbgBlur, dbgBin;
-        cv::GaussianBlur(grayImg, dbgBlur, cv::Size(5, 5), 0);
-        cv::threshold(dbgBlur, dbgBin, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
-        cv::imwrite("E:/test/debug_gray.png", grayImg);   // 회색 원본
-        cv::imwrite("E:/test/debug_binary.png", dbgBin);  // 이진화 결과
-        std::cerr << "[DEBUG] saved debug_gray.png / debug_binary.png ("
-                  << w << "x" << h << ")\n";
-    }
-
     // 3. 핸들 생성
     InspHandle handle = Insp_Create();
     
